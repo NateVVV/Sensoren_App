@@ -23,9 +23,9 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accelerometer_excercise);
 
-        X_Accl_TextView = (TextView) findViewById(R.id.X_Accl_TextView);
-        Y_Accl_TextView = (TextView) findViewById(R.id.Y_Accl_TextView);
-        Z_Accl_TextView = (TextView) findViewById(R.id.Z_Accl_TextView);
+        X_Accl_TextView = findViewById(R.id.X_Accl_TextView);
+        Y_Accl_TextView = findViewById(R.id.Y_Accl_TextView);
+        Z_Accl_TextView = findViewById(R.id.Z_Accl_TextView);
 
 
         // Get an instance of the SensorManager

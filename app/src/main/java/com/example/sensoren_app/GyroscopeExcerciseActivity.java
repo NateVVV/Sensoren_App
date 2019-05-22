@@ -23,9 +23,9 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gyroscope_excercise);
 
-        X_Gyro_TextView = (TextView) findViewById(R.id.X_Gyro_TextView);
-        Y_Gyro_TextView = (TextView) findViewById(R.id.Y_Gyro_TextView);
-        Z_Gyro_TextView = (TextView) findViewById(R.id.Z_Gyro_TextView);
+        X_Gyro_TextView = findViewById(R.id.X_Gyro_TextView);
+        Y_Gyro_TextView = findViewById(R.id.Y_Gyro_TextView);
+        Z_Gyro_TextView = findViewById(R.id.Z_Gyro_TextView);
 
 
         // Get an instance of the SensorManager

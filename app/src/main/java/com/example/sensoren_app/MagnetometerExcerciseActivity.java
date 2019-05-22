@@ -23,9 +23,9 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
         super.onCreate(savedInstanceState);
         setContentView(R.layout.magnetometer_excercise);
 
-        X_Magneto_TextView = (TextView) findViewById(R.id.X_Magneto_TextView);
-        Y_Magneto_TextView = (TextView) findViewById(R.id.Y_Magneto_TextView);
-        Z_Magneto_TextView = (TextView) findViewById(R.id.Z_Magneto_TextView);
+        X_Magneto_TextView = findViewById(R.id.X_Magneto_TextView);
+        Y_Magneto_TextView = findViewById(R.id.Y_Magneto_TextView);
+        Z_Magneto_TextView = findViewById(R.id.Z_Magneto_TextView);
 
 
         // Get an instance of the SensorManager
