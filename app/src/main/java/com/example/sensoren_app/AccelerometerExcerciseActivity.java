@@ -15,6 +15,7 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     private TextView X_Accl_TextView;
     private TextView Y_Accl_TextView;
     private TextView Z_Accl_TextView;
+    private int counter = 0;
 
 
 
@@ -51,7 +52,12 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
             return;
-        updateText(event);
+        if(counter <10){
+            counter++;
+        }else {
+            updateText(event);
+            counter =0;
+        }
     }
 
     private void updateText(SensorEvent event) {

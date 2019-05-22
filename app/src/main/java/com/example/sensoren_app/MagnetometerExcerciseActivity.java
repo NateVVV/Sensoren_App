@@ -15,6 +15,7 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
     private TextView X_Magneto_TextView;
     private TextView Y_Magneto_TextView;
     private TextView Z_Magneto_TextView;
+    private int counter = 0;
 
 
 
@@ -51,7 +52,12 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
             return;
-        updateText(event);
+        if(counter <10){
+            counter++;
+        }else {
+            updateText(event);
+            counter =0;
+        }
     }
 
     private void updateText(SensorEvent event) {

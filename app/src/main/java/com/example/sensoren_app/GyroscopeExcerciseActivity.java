@@ -15,6 +15,7 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
     private TextView X_Gyro_TextView;
     private TextView Y_Gyro_TextView;
     private TextView Z_Gyro_TextView;
+    private int counter = 0;
 
 
 
@@ -51,7 +52,12 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_GYROSCOPE)
             return;
-        updateText(event);
+        if(counter <10){
+            counter++;
+        }else {
+            updateText(event);
+            counter =0;
+        }
     }
 
     private void updateText(SensorEvent event) {
