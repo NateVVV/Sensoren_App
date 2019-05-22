@@ -3,4 +3,7 @@
     <string name="Accelerometer_excercise">Accelerometer</string>
     <string name="Gyroscope_excercise">Gyroscope</string>
     <string name="Magnetometer_excercise">Magnetometer</string>
+    <string name="X_Label">X: </string>
+    <string name="Y_Label">Y: </string>
+    <string name="Z_Label">Z: </string>
 </resources>
