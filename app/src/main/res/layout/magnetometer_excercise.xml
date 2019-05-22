@@ -1,43 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/buttonAccelerometer"
+    <TextView
+        android:id="@+id/X_Magneto_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:onClick="toAccelerometerExcercise"
-        android:text="@string/Accelerometer_excercise"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonGyroscope"
+    <TextView
+        android:id="@+id/Y_Magneto_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="toGyroscopeExcercise"
-        android:text="@string/Gyroscope_excercise"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAccelerometer" />
+        app:layout_constraintTop_toBottomOf="@+id/X_Magneto_TextView" />
 
-    <Button
-        android:id="@+id/buttonMagnetometer"
+    <TextView
+        android:id="@+id/Z_Magneto_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="toMagnetometerExcercise"
-        android:text="@string/Magnetometer_excercise"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGyroscope" />
-
+        app:layout_constraintTop_toBottomOf="@+id/Y_Magneto_TextView" />
 </android.support.constraint.ConstraintLayout>
