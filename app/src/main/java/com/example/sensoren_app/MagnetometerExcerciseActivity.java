@@ -15,7 +15,13 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
     private TextView X_Magneto_TextView;
     private TextView Y_Magneto_TextView;
     private TextView Z_Magneto_TextView;
-    private int counter = 0;
+    /*possible Speeds:
+        SENSOR_DELAY_FASTEST
+        SENSOR_DELAY_GAME
+        SENSOR_DELAY_NORMAL
+        SENSOR_DELAY_UI
+     */
+    private int speed = SensorManager.SENSOR_DELAY_NORMAL;
 
 
 
@@ -32,7 +38,7 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         magnetoSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        sensorManager.registerListener(this, magnetoSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, magnetoSensor, speed);
 
     }
     @Override
@@ -45,19 +51,16 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
     protected void onResume() {
         super.onResume();
         // Start the simulation
-        sensorManager.registerListener(this, magnetoSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, magnetoSensor,speed);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
             return;
-        if(counter <10){
-            counter++;
-        }else {
-            updateText(event);
-            counter =0;
-        }
+
+        updateText(event);
+
     }
 
     private void updateText(SensorEvent event) {

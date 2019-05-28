@@ -15,7 +15,13 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
     private TextView X_Gyro_TextView;
     private TextView Y_Gyro_TextView;
     private TextView Z_Gyro_TextView;
-    private int counter = 0;
+    /*possible Speeds:
+        SENSOR_DELAY_FASTEST
+        SENSOR_DELAY_GAME
+        SENSOR_DELAY_NORMAL
+        SENSOR_DELAY_UI
+     */
+    private int speed = SensorManager.SENSOR_DELAY_NORMAL;
 
 
 
@@ -32,7 +38,7 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        sensorManager.registerListener(this, gyroSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, gyroSensor, speed);
 
     }
     @Override
@@ -45,19 +51,15 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
     protected void onResume() {
         super.onResume();
         // Start the simulation
-        sensorManager.registerListener(this, gyroSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, gyroSensor, speed);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_GYROSCOPE)
             return;
-        if(counter <10){
-            counter++;
-        }else {
-            updateText(event);
-            counter =0;
-        }
+
+        updateText(event);
     }
 
     private void updateText(SensorEvent event) {

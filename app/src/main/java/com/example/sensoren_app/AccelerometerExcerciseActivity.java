@@ -15,7 +15,13 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     private TextView X_Accl_TextView;
     private TextView Y_Accl_TextView;
     private TextView Z_Accl_TextView;
-    private int counter = 0;
+    /*possible Speeds:
+        SENSOR_DELAY_FASTEST
+        SENSOR_DELAY_GAME
+        SENSOR_DELAY_NORMAL
+        SENSOR_DELAY_UI
+     */
+    private int speed = SensorManager.SENSOR_DELAY_NORMAL;
 
 
 
@@ -32,7 +38,7 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(this, accelSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, accelSensor, speed);
 
     }
     @Override
@@ -45,19 +51,14 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     protected void onResume() {
         super.onResume();
         // Start the simulation
-        sensorManager.registerListener(this, accelSensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, accelSensor, speed);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
             return;
-        if(counter <10){
-            counter++;
-        }else {
-            updateText(event);
-            counter =0;
-        }
+        updateText(event);
     }
 
     private void updateText(SensorEvent event) {
