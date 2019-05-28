@@ -44,6 +44,8 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
     @Override
     protected void onPause() {
         super.onPause();
+        sensorManager.unregisterListener(this);
+
 
     }
 

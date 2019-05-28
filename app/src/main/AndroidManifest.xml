@@ -19,6 +19,7 @@
         <activity android:name=".AccelerometerExcerciseActivity" />
         <activity android:name=".GyroscopeExcerciseActivity" />
         <activity android:name=".MagnetometerExcerciseActivity" />
+
     </application>
 
 </manifest>

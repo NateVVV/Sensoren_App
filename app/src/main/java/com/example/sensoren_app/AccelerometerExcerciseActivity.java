@@ -44,6 +44,7 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     @Override
     protected void onPause() {
         super.onPause();
+        sensorManager.unregisterListener(this);
 
     }
 

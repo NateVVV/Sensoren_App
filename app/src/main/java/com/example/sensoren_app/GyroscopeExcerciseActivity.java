@@ -44,6 +44,7 @@ public class GyroscopeExcerciseActivity extends Activity implements SensorEventL
     @Override
     protected void onPause() {
         super.onPause();
+        sensorManager.unregisterListener(this);
 
     }
 
