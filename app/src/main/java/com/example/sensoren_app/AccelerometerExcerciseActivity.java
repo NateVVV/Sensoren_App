@@ -23,8 +23,6 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
      */
     private int speed = SensorManager.SENSOR_DELAY_NORMAL;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,16 +32,18 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
         Y_Accl_TextView = findViewById(R.id.Y_Accl_TextView);
         Z_Accl_TextView = findViewById(R.id.Z_Accl_TextView);
 
-
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        // Get the Sensor you want to Read Data from
         accelSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        // register the Listener on the Sensor you want to react on
         sensorManager.registerListener(this, accelSensor, speed);
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();
+        // Stop reading Sensor Data to save Batterie
         sensorManager.unregisterListener(this);
 
     }
@@ -51,27 +51,27 @@ public class AccelerometerExcerciseActivity extends Activity implements SensorEv
     @Override
     protected void onResume() {
         super.onResume();
-        // Start the simulation
+        // Start Reading Sensor Data again
         sensorManager.registerListener(this, accelSensor, speed);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        // Check if it´s an Event from the Sensor you want to Read Data from
         if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
             return;
         updateText(event);
     }
 
     private void updateText(SensorEvent event) {
+        // Update the Displayed Values
         X_Accl_TextView.setText(String.valueOf(event.values[0]));
         Y_Accl_TextView.setText(String.valueOf(event.values[1]));
         Z_Accl_TextView.setText(String.valueOf(event.values[2]));
-
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        // do nothing
     }
-
 }

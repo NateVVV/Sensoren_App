@@ -23,8 +23,6 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
      */
     private int speed = SensorManager.SENSOR_DELAY_NORMAL;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,47 +32,46 @@ public class MagnetometerExcerciseActivity extends Activity implements SensorEve
         Y_Magneto_TextView = findViewById(R.id.Y_Magneto_TextView);
         Z_Magneto_TextView = findViewById(R.id.Z_Magneto_TextView);
 
-
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        // Get the Sensor you want to Read Data from
         magnetoSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        // register the Listener on the Sensor you want to react on
         sensorManager.registerListener(this, magnetoSensor, speed);
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();
+        // Stop reading Sensor Data to save Batterie
         sensorManager.unregisterListener(this);
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Start the simulation
+        // Start Reading Sensor Data again
         sensorManager.registerListener(this, magnetoSensor,speed);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        // Check if it´s an Event from the Sensor you want to Read Data from
         if (event.sensor.getType() != Sensor.TYPE_MAGNETIC_FIELD)
             return;
-
         updateText(event);
-
     }
 
     private void updateText(SensorEvent event) {
+        // Update the Displayed Values
         X_Magneto_TextView.setText(String.valueOf(event.values[0]));
         Y_Magneto_TextView.setText(String.valueOf(event.values[1]));
         Z_Magneto_TextView.setText(String.valueOf(event.values[2]));
-
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        // do nothing
     }
 
 }
